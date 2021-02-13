@@ -1,0 +1,54 @@
+{
+    "name": "iamkevinmckee/many-to-many",
+    "description": "Easily generate a migration for a many to many relationship",
+    "keywords": [
+        "iamkevinmckee",
+        "many-to-many"
+    ],
+    "homepage": "https://github.com/iamkevinmckee/many-to-many",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Kevin McKee",
+            "email": "mckee.kevin@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "IAmKevinMcKee\\ManyToMany\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "IAmKevinMcKee\\ManyToMany\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "IAmKevinMcKee\\ManyToMany\\ManyToManyServiceProvider"
+            ],
+            "aliases": {
+                "ManyToMany": "IAmKevinMcKee\\ManyToMany\\ManyToManyFacade"
+            }
+        }
+    }
+}
