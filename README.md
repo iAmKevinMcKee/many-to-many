@@ -6,7 +6,7 @@ When you want to make a [many to many](https://laravel.com/docs/8.x/eloquent-rel
 You can install the package via composer:
 
 ```bash
-composer require iamkevinmckee/many-to-many
+composer require iamkevinmckee/many-to-many --dev
 ```
 
 ## Usage
