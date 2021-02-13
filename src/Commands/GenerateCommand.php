@@ -47,8 +47,8 @@ class GenerateCommand extends Command
             $this->argument('secondModel'),
         ];
         sort($models, SORT_STRING);
-        $first = Str::studly($models[0]);
-        $second = Str::studly($models[1]);
+        $first = Str::studly(Str::singular($models[0]));
+        $second = Str::studly(Str::singular($models[1]));
 
         $newMigration = $this->files->get(__DIR__.'/../Stubs/migration.stub');
         $newMigration = str_replace('|UPPERFIRST|', $first, $newMigration);
