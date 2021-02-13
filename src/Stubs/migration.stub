@@ -16,9 +16,9 @@ class CreateManyToManyPivotFor|UPPERFIRST||UPPERSECOND| extends Migration
         Schema::create('|LOWERFIRST|_|LOWERSECOND|', function (Blueprint $table) {
             $table->unsignedBigInteger('|LOWERFIRST|_id');
             $table->unsignedBigInteger('|LOWERSECOND|_id');
-            $table->foreign('|LOWERFIRST|_id')->references('id')->on('users')
+            $table->foreign('|LOWERFIRST|_id')->references('id')->on('|LOWERPLURALFIRST|')
                 ->onDelete('cascade');
-            $table->foreign('|LOWERSECOND|_id')->references('id')->on('roles')
+            $table->foreign('|LOWERSECOND|_id')->references('id')->on('|LOWERPLURALSECOND|')
                 ->onDelete('cascade');
         });
     }

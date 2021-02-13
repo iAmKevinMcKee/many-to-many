@@ -55,6 +55,9 @@ class GenerateCommand extends Command
         $newMigration = str_replace('|LOWERFIRST|', Str::snake($first), $newMigration);
         $newMigration = str_replace('|UPPERSECOND|', $second, $newMigration);
         $newMigration = str_replace('|LOWERSECOND|', Str::snake($second), $newMigration);
+        $newMigration = str_replace('|LOWERPLURALFIRST|', Str::snake(Str::plural($first)), $newMigration);
+        $newMigration = str_replace('|LOWERPLURALSECOND|', Str::snake(Str::plural($second)), $newMigration);
+
 
         $this->files->put(
             base_path('database/migrations/' . now()->format('Y_m_d_His') . '_create_many_to_many_pivot_for_'
