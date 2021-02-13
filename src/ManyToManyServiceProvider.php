@@ -2,6 +2,7 @@
 
 namespace IAmKevinMcKee\ManyToMany;
 
+use IAmKevinMcKee\ManyToMany\Commands\GenerateCommand;
 use Illuminate\Support\ServiceProvider;
 
 class ManyToManyServiceProvider extends ServiceProvider
@@ -40,7 +41,9 @@ class ManyToManyServiceProvider extends ServiceProvider
             ], 'lang');*/
 
             // Registering package commands.
-            // $this->commands([]);
+             $this->commands([
+                 GenerateCommand::class,
+             ]);
         }
     }
 

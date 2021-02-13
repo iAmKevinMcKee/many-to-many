@@ -1,12 +1,6 @@
-# Very short description of the package
+# Generate Many to Many Migrations
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/iamkevinmckee/many-to-many.svg?style=flat-square)](https://packagist.org/packages/iamkevinmckee/many-to-many)
-[![Build Status](https://img.shields.io/travis/iamkevinmckee/many-to-many/master.svg?style=flat-square)](https://travis-ci.org/iamkevinmckee/many-to-many)
-[![Quality Score](https://img.shields.io/scrutinizer/g/iamkevinmckee/many-to-many.svg?style=flat-square)](https://scrutinizer-ci.com/g/iamkevinmckee/many-to-many)
-[![Total Downloads](https://img.shields.io/packagist/dt/iamkevinmckee/many-to-many.svg?style=flat-square)](https://packagist.org/packages/iamkevinmckee/many-to-many)
-
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
-
+When you want to make a [many to many](https://laravel.com/docs/8.x/eloquent-relationships#many-to-many) relationship in Laravel, you need to create a pivot table. This package gives you a command to generate the migration for that pivot table automatically.
 ## Installation
 
 You can install the package via composer:
@@ -17,15 +11,33 @@ composer require iamkevinmckee/many-to-many
 
 ## Usage
 
+When you need to create a pivot table for a many to many relationship, just run the following command:
 ``` php
-// Usage description here
+php artisan many-to-many FirstModel SecondModel
 ```
 
-### Testing
+For example:
 
-``` bash
-composer test
+``` php
+php artisan many-to-many tag post
 ```
+
+This will generate a migration with the following `up` method:
+
+```php
+public function up()
+{
+    Schema::create('post_tag', function (Blueprint $table) {
+        $table->unsignedBigInteger('post_id');
+        $table->unsignedBigInteger('tag_id');
+        $table->foreign('post_id')->references('id')->on('users')
+            ->onDelete('cascade');
+        $table->foreign('tag_id')->references('id')->on('roles')
+            ->onDelete('cascade');
+    });
+}
+```
+Then you only need to run the migrate command and add the relationship to the models.
 
 ### Changelog
 
