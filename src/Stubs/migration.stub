@@ -4,13 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateManyToManyPivotFor|UPPERFIRST||UPPERSECOND| extends Migration
+return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('|LOWERFIRST|_|LOWERSECOND|', function (Blueprint $table) {
@@ -21,15 +16,5 @@ class CreateManyToManyPivotFor|UPPERFIRST||UPPERSECOND| extends Migration
             $table->foreign('|LOWERSECOND|_id')->references('id')->on('|LOWERPLURALSECOND|')
                 ->onDelete('cascade');
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('|LOWERFIRST|_|LOWERSECOND|');
     }
 }
